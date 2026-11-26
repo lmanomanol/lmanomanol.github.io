@@ -817,21 +817,25 @@ a {
 }
 
 .contact-item a {
-  font-size: 1.08rem;
+  font-size: clamp(0.92rem, 3.8vw, 1.08rem);
   font-weight: 600;
   color: #ffffff;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .contact-item a:hover {
   color: var(--color-glacier);
 }
 
-.contact-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
 
 .btn-copy {
   background-color: rgba(56, 189, 248, 0.14);
@@ -906,7 +910,7 @@ a {
   .hero-grid,
   .two-col-grid,
   .contact-box {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0,1fr);
   }
 
   .hero-media {
@@ -965,6 +969,7 @@ a {
 /* ==========================================================================
    12. Interactions de défilement & Rail horizontal manipulable (Desktop + Mobile)
    ========================================================================== */
+html,
 body {
   overflow-x: clip;
 }
@@ -1387,16 +1392,17 @@ html {
 
 @media (max-width: 880px) {
   .contact-box {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 560px) {
   .form-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .contact-form {
-    padding: 1.5rem;
+  .contact-form,
+  .contact-actions {
+    padding: 1.25rem;
   }
 }
